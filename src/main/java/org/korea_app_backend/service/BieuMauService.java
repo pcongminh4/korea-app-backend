@@ -54,4 +54,16 @@ public class BieuMauService {
         repo.delete(bieuMau);
     }
 
+    public List<BieuMauModel> filter(String hoTen, LocalDate ngayHen){
+        if (hoTen != null && ngayHen != null){
+            return repo.findByHoTenContainingIgnoreCaseAndNgayHen(hoTen, ngayHen);
+        } else if (hoTen != null){
+            return repo.findByHoTenContainingIgnoreCase(hoTen);
+        } else if (ngayHen != null){
+            return repo.findByNgayHen(ngayHen);
+        } else {
+            return repo.findAll();
+        }
+    }
+
 }
