@@ -10,7 +10,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BieuMauDTO {
+public class BieuMauDTO {    
+    @NotNull(message = "This field is required")
+    private LocalDate ngaybieumau;
+
     @NotBlank(message = "Họ tên không được để trống")
     @Size(max = 100, message = "Họ tên không được vượt quá 100 ký tự")
     private String hoTen;
@@ -50,4 +53,12 @@ public class BieuMauDTO {
 
     @NotNull(message = "Khung giờ là bắt buộc")
     private Integer khungGioId;
+
+    @NotBlank(message = "This field is required")
+    private String thu;
+
+    private LocalDate ngayXacNhan;
+    private LocalDate ngayTao;
+
+    
 }
