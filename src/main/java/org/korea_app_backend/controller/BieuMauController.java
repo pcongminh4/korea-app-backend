@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -130,6 +131,17 @@ public class BieuMauController {
 
         return ResponseEntity.ok(
                 new ApiResponse<>(true, "Lấy biểu mẫu thành công", bm)
+        );
+    }
+
+    @GetMapping("/filter")
+    public ResponseEntity<ApiResponse<List<BieuMauModel>>> filter (
+            @RequestParam(required = false) String hoTen,
+            @RequestParam(required = false) LocalDate ngayHen
+            ){
+        List<BieuMauModel> list = bieuMauService.filter(hoTen, ngayHen);
+        return ResponseEntity.ok(
+                new ApiResponse<>(true, "Danh sach loc", list)
         );
     }
 }

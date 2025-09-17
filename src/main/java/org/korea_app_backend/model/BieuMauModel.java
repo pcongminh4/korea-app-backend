@@ -39,7 +39,7 @@ public class BieuMauModel {
     @Column(nullable = false)
     private String nganhDaotao;
 
-    @Column( nullable = false)
+    @Column(nullable = false)
     private String soHieuBang;
 
     @Column(nullable = false)
@@ -54,6 +54,7 @@ public class BieuMauModel {
     private LocalDate ngayTao;
     private LocalDate ngayXacNhan;
     private LocalDate ngaybieumau;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "khung_gio_id", referencedColumnName = "id", nullable = false)
     private KhungGioModel khungGio;
