@@ -38,6 +38,7 @@ public class KhungGioController {
 
     @PostMapping
     public ResponseEntity<ApiResponse<KhungGioModel>> create(@Valid @RequestBody KhungGioDTO khungGioDTO) {
+                System.err.println(khungGioDTO.getKhungGio());
         KhungGioModel model = KhungGioModel.builder()
                 .khungGio(khungGioDTO.getKhungGio())
                 .build();

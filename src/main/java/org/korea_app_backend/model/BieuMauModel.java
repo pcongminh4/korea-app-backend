@@ -1,6 +1,7 @@
 package org.korea_app_backend.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -15,8 +16,11 @@ import java.time.LocalDate;
 public class BieuMauModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
+     private long id;
+     
+    @Column(nullable = false)
+    private String thu;
+    
     @Column(nullable = false)
     private String hoTen;
 
@@ -35,7 +39,7 @@ public class BieuMauModel {
     @Column(nullable = false)
     private String nganhDaotao;
 
-    @Column(unique = true, nullable = false)
+    @Column( nullable = false)
     private String soHieuBang;
 
     @Column(nullable = false)
@@ -49,8 +53,8 @@ public class BieuMauModel {
 
     private LocalDate ngayTao;
     private LocalDate ngayXacNhan;
-
-    @OneToOne(cascade = CascadeType.ALL)
+    private LocalDate ngaybieumau;
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "khung_gio_id", referencedColumnName = "id", nullable = false)
     private KhungGioModel khungGio;
 

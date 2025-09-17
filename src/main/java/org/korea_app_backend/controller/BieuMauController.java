@@ -48,6 +48,11 @@ public class BieuMauController {
                 .diemTotNghiep(bm.getDiemTotNghiep())
                 .ngayHen(bm.getNgayHen())
                 .khungGio(khungGio)
+                .thu(bm.getThu())
+                .ngaybieumau(bm.getNgaybieumau())
+                .ngayXacNhan(bm.getNgayXacNhan())
+                .ngayTao(bm.getNgayTao())
+                .ngayHen(bm.getNgayHen())
                 .build();
 
         BieuMauModel saved = bieuMauService.create(bieuMau);
@@ -77,6 +82,11 @@ public class BieuMauController {
                 .diemTotNghiep(bm.getDiemTotNghiep())
                 .ngayHen(bm.getNgayHen())
                 .khungGio(khungGio)
+                .ngaybieumau(bm.getNgaybieumau())
+                .ngayTao(bm.getNgayTao())
+                .ngayXacNhan(bm.getNgayXacNhan())
+
+                .thu(bm.getThu())
                 .build();
 
         BieuMauModel updated = bieuMauService.update(id, detail);
@@ -96,18 +106,21 @@ public class BieuMauController {
     // API lấy QR code ảnh từ id
     @GetMapping("/{id}/qr")
     public ResponseEntity<byte[]> getQRCode(@PathVariable int id) throws Exception {
-        BieuMauModel bm = bieuMauService.getById(id)
-                .orElseThrow(() -> new RuntimeException("Không tìm thấy biểu mẫu"));
+            BieuMauModel bm = bieuMauService.getById(id)
+                            .orElseThrow(() -> new RuntimeException("Không tìm thấy biểu mẫu"));
 
-        String qrContent = "http://localhost:8080/bieumau/" + bm.getId();
+            // link bạn muốn nhúng vào QR
+            String qrContent = "http://localhost:5173/member/" + bm.getId();
 
-        byte[] qrImage = qrCodeService.generateQRCode(qrContent, 300, 300);
+            byte[] qrImage = qrCodeService.generateQRCode(qrContent, 360, 360);
 
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"bm-" + bm.getId() + ".png\"")
-                .contentType(MediaType.IMAGE_PNG)
-                .body(qrImage);
+            return ResponseEntity.ok()
+                            .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"bm-" + bm.getId() + ".png\"")
+                            .contentType(MediaType.IMAGE_PNG)
+                            .body(qrImage);
     }
+
+
 
     // API xem thông tin qua QR code(maQR la id)
     @GetMapping("/view/{maQR}")

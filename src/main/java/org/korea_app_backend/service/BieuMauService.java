@@ -25,8 +25,7 @@ public class BieuMauService {
     }
 
     public BieuMauModel create(BieuMauModel bieuMau) {
-        bieuMau.setNgayTao(LocalDate.now());
-        bieuMau.setNgayXacNhan(LocalDate.now());
+
         return repo.save(bieuMau);
     }
 
@@ -44,7 +43,10 @@ public class BieuMauService {
         bieuMau.setDiemTotNghiep(bieuMauDetail.getDiemTotNghiep());
         bieuMau.setNgayHen(bieuMauDetail.getNgayHen());
         bieuMau.setKhungGio(bieuMauDetail.getKhungGio());
-
+         bieuMau.setThu(bieuMauDetail.getThu());
+         bieuMau.setNgaybieumau(bieuMauDetail.getNgaybieumau());
+         bieuMau.setNgayTao(bieuMauDetail.getNgayTao());
+         bieuMau.setNgayXacNhan(bieuMauDetail.getNgayXacNhan());
         return repo.save(bieuMau);
     }
 

@@ -12,6 +12,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Builder
 public class BieuMauDTO {
+
+    
+    @NotNull(message = "This field is required")
+    private LocalDate ngaybieumau;
     @NotBlank(message = "This field is required")
     private String hoTen;
 
@@ -44,4 +48,12 @@ public class BieuMauDTO {
 
     @NotNull(message = "This field is required")
     private Integer khungGioId;
+
+    @NotBlank(message = "This field is required")
+    private String thu;
+
+    private LocalDate ngayXacNhan;
+    private LocalDate ngayTao;
+
+    
 }
