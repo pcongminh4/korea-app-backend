@@ -1,5 +1,7 @@
 package org.korea_app_backend.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -13,13 +15,17 @@ import java.time.LocalDate;
 @Builder
 public class BieuMauDTO {
 
-    
     @NotNull(message = "This field is required")
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate ngaybieumau;
+
     @NotBlank(message = "This field is required")
     private String hoTen;
 
     @NotNull(message = "This field is required")
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate ngaySinh;
 
     @NotBlank(message = "This field is required")
@@ -44,6 +50,8 @@ public class BieuMauDTO {
     private float diemTotNghiep;
 
     @NotNull(message = "This field is required")
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate ngayHen;
 
     @NotNull(message = "This field is required")
@@ -52,8 +60,11 @@ public class BieuMauDTO {
     @NotBlank(message = "This field is required")
     private String thu;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate ngayXacNhan;
-    private LocalDate ngayTao;
 
-    
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private LocalDate ngayTao;
 }
